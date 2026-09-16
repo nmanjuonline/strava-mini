@@ -217,14 +217,14 @@ export default function ActivitiesList({ searchSlot }) {
             <div className="core-stats">
               <span className="stat-item">{formatDistance(activity.distance)}</span>
               <span className="stat-item">
-                <span className="stat-sep">|</span> {formatDuration(activity.moving_time)}
+                <span className="stat-sep">|</span>{formatDuration(activity.moving_time)}
               </span>
               <span className="stat-item">
-                <span className="stat-sep">|</span> {formatPace(activity.average_speed)}/km
+                <span className="stat-sep">|</span>{formatPace(activity.average_speed)}/km
               </span>
               {activity.average_heartrate && (
                 <span className="stat-item">
-                  <span className="stat-sep">|</span>{" "}
+                  <span className="stat-sep">|</span>
                   {Math.round(activity.average_heartrate)} bpm
                 </span>
               )}

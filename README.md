@@ -1,4 +1,4 @@
-# Strava-mini
+# Strava Mini
 
 A small two-part app for browsing and editing your Strava activities:
 

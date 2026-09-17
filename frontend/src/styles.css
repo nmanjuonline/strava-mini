@@ -257,16 +257,22 @@ a {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 6px;
+  gap: 4px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
   color: var(--ink);
   margin: 0 0 8px;
+}
+
+.stat-item {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .stat-sep {
   color: var(--ink-dim);
   opacity: 0.5;
+  margin-right: 4px;
 }
 
 .gear-line {

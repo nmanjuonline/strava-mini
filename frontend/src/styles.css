@@ -215,13 +215,15 @@ a {
 }
 
 .activity-row .type-tag {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
   color: var(--accent);
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 3px 7px;
-  white-space: nowrap;
+  border-radius: 6px;
   margin-top: 3px;
 }
 

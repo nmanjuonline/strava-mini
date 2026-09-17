@@ -16,6 +16,7 @@ import EditModal from "./EditModal.jsx";
 import SocialModal from "./SocialModal.jsx";
 import SplitsTable from "./SplitsTable.jsx";
 import SearchPanel from "./SearchPanel.jsx";
+import SportIcon from "./SportIcon.jsx";
 
 const PER_PAGE = 20;
 const SEARCH_FETCH_PAGE_SIZE = 200; // Strava's max per_page
@@ -230,7 +231,9 @@ export default function ActivitiesList({ searchSlot }) {
     return (
       <div key={activity.id}>
         <div className="activity-row">
-          <span className="type-tag">{activity.type || activity.sport_type}</span>
+          <span className="type-tag" title={activity.sport_type || activity.type}>
+            <SportIcon sportType={activity.sport_type || activity.type} />
+          </span>
           <div className="activity-main">
             <p className="name">{activity.name}</p>
             <p className="activity-datetime">

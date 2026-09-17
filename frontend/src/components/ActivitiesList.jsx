@@ -21,6 +21,30 @@ const PER_PAGE = 20;
 const SEARCH_FETCH_PAGE_SIZE = 200; // Strava's max per_page
 const SEARCH_FETCH_PAGE_CAP = 50; // safety cap: 50 * 200 = 10,000 activities
 
+// Distance and pace are meaningless for non-distance activities (weight
+// training, yoga, etc.) — Strava returns 0/absent values for these, so
+// skip them instead of showing "0 km" or "--:--/km". Time and, when
+// present, heart rate always apply.
+function buildStatParts(activity) {
+  const parts = [];
+  if (activity.distance > 0) {
+    parts.push({ key: "distance", content: formatDistance(activity.distance) });
+  }
+  if (activity.moving_time > 0) {
+    parts.push({ key: "time", content: formatDuration(activity.moving_time) });
+  }
+  if (activity.average_speed > 0) {
+    parts.push({ key: "pace", content: `${formatPace(activity.average_speed)}/km` });
+  }
+  if (activity.average_heartrate) {
+    parts.push({
+      key: "hr",
+      content: `${Math.round(activity.average_heartrate)} bpm`,
+    });
+  }
+  return parts;
+}
+
 export default function ActivitiesList({ searchSlot }) {
   const [page, setPage] = useState(1);
   const [activities, setActivities] = useState([]);
@@ -215,19 +239,12 @@ export default function ActivitiesList({ searchSlot }) {
             </p>
 
             <div className="core-stats">
-              <span className="stat-item">{formatDistance(activity.distance)}</span>
-              <span className="stat-item">
-                <span className="stat-sep">|</span>{formatDuration(activity.moving_time)}
-              </span>
-              <span className="stat-item">
-                <span className="stat-sep">|</span>{formatPace(activity.average_speed)}/km
-              </span>
-              {activity.average_heartrate && (
-                <span className="stat-item">
-                  <span className="stat-sep">|</span>
-                  {Math.round(activity.average_heartrate)} bpm
+              {buildStatParts(activity).map((part, i) => (
+                <span className="stat-item" key={part.key}>
+                  {i > 0 && <span className="stat-sep">|</span>}
+                  {part.content}
                 </span>
-              )}
+              ))}
             </div>
 
             {activity.gear_id && (

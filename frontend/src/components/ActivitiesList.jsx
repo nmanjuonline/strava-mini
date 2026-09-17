@@ -230,7 +230,7 @@ export default function ActivitiesList({ searchSlot }) {
     return (
       <div key={activity.id}>
         <div className="activity-row">
-          <span className="type-tag">{activity.sport_type || activity.type}</span>
+          <span className="type-tag">{activity.type || activity.sport_type}</span>
           <div className="activity-main">
             <p className="name">{activity.name}</p>
             <p className="activity-datetime">

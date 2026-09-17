@@ -6,12 +6,12 @@ compatibility_date = "2024-11-01"
 # Create it with:  wrangler kv namespace create STRAVA_MINI_TOKENS
 # then paste the returned id below.
 kv_namespaces = [
-  { binding = "STRAVA_MINI_TOKENS", id = "REPLACE_WITH_KV_NAMESPACE_ID" }
+  { binding = "STRAVA_MINI_TOKENS", id = "ff333e9eeab84c3cb21d2e1ba8f3d1a4" }
 ]
 
 [vars]
 # Your Strava API application's Client ID (safe to expose, it's public).
-STRAVA_CLIENT_ID = "REPLACE_WITH_YOUR_STRAVA_CLIENT_ID"
+STRAVA_CLIENT_ID = "137524"
 
 # The full URL where your frontend is actually hosted, including a path
 # if it's a GitHub Pages project site (e.g. https://you.github.io/repo-name)
@@ -19,7 +19,7 @@ STRAVA_CLIENT_ID = "REPLACE_WITH_YOUR_STRAVA_CLIENT_ID"
 # back after login (uses the full value) and for CORS (the worker
 # automatically derives just the origin from this, since browsers never
 # send a path in the Origin header). No trailing slash.
-FRONTEND_URL = "https://yourusername.github.io/strava-mini"
+FRONTEND_URL = "https://nmanjuonline.github.io/strava-mini"
 
 # Secrets (never put these here) — set with:
 #   wrangler secret put STRAVA_CLIENT_SECRET
